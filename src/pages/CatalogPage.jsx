@@ -19,33 +19,24 @@ export default function CatalogPage() {
   };
 
   return (
-    <section style={{ padding: 40 }}>
+    <section className="container">
       <Filters />
 
       {isLoading && <CamperSkeleton />}
 
+      {!isLoading && items.length === 0 && (
+        <p>No campers found. Try changing filters.</p>
+      )}
+
       {items.map((camper) => (
-          <CamperCard key={camper.id} camper={camper} />
-
-      {isLoading && items.length === 0 && (
-  <p>No campers found. Try changing filters.</p>
-)}
-
+        <CamperCard key={camper.id} camper={camper} />
       ))}
 
-      <button
-        onClick={loadMore}
-        style={{
-          marginTop: 32,
-          padding: "16px 32px",
-          borderRadius: 200,
-          border: "1px solid var(--gray-light)",
-          background: "white",
-          cursor: "pointer",
-        }}
-      >
-        Load more
-      </button>
+      {items.length > 0 && (
+        <button className="loadMoreBtn" onClick={loadMore}>
+          Load more
+        </button>
+      )}
     </section>
   );
 }

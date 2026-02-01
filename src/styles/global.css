@@ -1,13 +1,153 @@
-@import './variables.css';
+@import "./variables.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ===== BASE ===== */
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   color: var(--main);
-  background: var(--white);
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/* ===== HEADER ===== */
+
+.header {
+  height: 72px;
+  background: #f7f7f7;
+  border-bottom: 1px solid #f2f4f7;
+}
+
+.headerInner {
+  width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 24px 64px;
+
+  display: flex;
+  align-items: center;
+  gap: 450px; 
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 136px;
+  height: 16px;
+  display: block;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav a {
+  font-weight: 500;
+  color: #101828;
+}
+
+.nav a.active {
+  color: #d84343;
+}
+
+/* ===== HERO ===== */
+
+.hero {
+  height: 696px;
+  position: relative;
+
+  background-image:
+    linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+    url('../assets/Images/homepctr.jpg');
+
+  background-size: cover;
+  background-position: center;
+}
+
+.heroInner {
+  width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.heroContent {
+  position: absolute;
+  left: 64px;
+  top: 260px;
+
+  width: 571px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.heroText h1 {
+  font-size: 48px;
+  line-height: 32px;
+  font-weight: 600;
+  color: #f7f7f7;
+}
+.heroText h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  color: #f7f7f7;
+}
+
+
+/* ===== BUTTON ===== */
+
+.primaryBtn {
+  width: 173px;
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e44848;
+  border-radius: 200px;
+
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
 }
