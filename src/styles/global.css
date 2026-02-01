@@ -1,0 +1,13 @@
+@import './variables.css';
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--main);
+  background: var(--white);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
