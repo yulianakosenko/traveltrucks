@@ -1,0 +1,25 @@
+.wrapper {
+  margin-bottom: 32px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.list span {
+  padding: 8px 14px;
+  background: var(--badge-bg);
+  border-radius: 100px;
+}
+
+.details {
+  list-style: none;
+  padding: 0;
+}
+
+.details li {
+  margin-bottom: 8px;
+}

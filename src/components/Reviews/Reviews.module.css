@@ -1,0 +1,12 @@
+.wrapper {
+  margin-bottom: 32px;
+}
+
+.review {
+  border-bottom: 1px solid var(--gray-light);
+  padding: 16px 0;
+}
+
+.stars {
+  color: var(--rating);
+}

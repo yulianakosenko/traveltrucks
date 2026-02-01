@@ -1,0 +1,12 @@
+.gallery {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.gallery img {
+  width: 240px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}

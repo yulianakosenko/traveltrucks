@@ -5,13 +5,11 @@ export const fetchCampers = createAsyncThunk(
   "campers/fetch",
   async (_, thunkAPI) => {
     const { filters, campers } = thunkAPI.getState();
-
     const data = await getCampers({
       ...filters,
       page: campers.page,
       limit: 4,
     });
-
     return data;
   },
 );
