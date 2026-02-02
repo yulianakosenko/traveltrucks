@@ -1,18 +1,20 @@
 @import "./variables.css";
 
+/* =========================
+   RESET / BASE
+========================= */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-
-/* ===== BASE ===== */
-
 body {
   margin: 0;
   font-family: "Inter", system-ui, sans-serif;
   color: var(--main);
+  background-color: #ffffff;
 }
 
 a {
@@ -20,24 +22,30 @@ a {
   color: inherit;
 }
 
-/* ===== HEADER ===== */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================
+   HEADER
+========================= */
 
 .header {
   height: 72px;
   background: #f7f7f7;
   border-bottom: 1px solid #f2f4f7;
-  
 }
 
 .headerInner {
   width: 1440px;
   height: 100%;
   margin: 0 auto;
-  padding: 24px 64px;
+  padding: 0 64px;
 
   display: flex;
   align-items: center;
-  gap: 450px; 
+  justify-content: space-between;
 }
 
 .logo {
@@ -48,13 +56,11 @@ a {
 .logo img {
   width: 136px;
   height: 16px;
-  display: block;
 }
 
 .nav {
   display: flex;
   gap: 32px;
-  align-items: center;
 }
 
 .nav a {
@@ -63,10 +69,12 @@ a {
 }
 
 .nav a.active {
-  color: #d84343;
+  color: #e44848;
 }
 
-/* ===== HERO ===== */
+/* =========================
+   HERO (HOME PAGE)
+========================= */
 
 .hero {
   height: 696px;
@@ -74,7 +82,7 @@ a {
 
   background-image:
     linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
-    url('../assets/Images/homepctr.jpg');
+    url("../assets/Images/homepctr.jpg");
 
   background-size: cover;
   background-position: center;
@@ -87,12 +95,10 @@ a {
   position: relative;
 }
 
-
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-
   pointer-events: none;
 
   background: linear-gradient(
@@ -114,7 +120,6 @@ a {
   gap: 40px;
 }
 
-
 .heroText {
   display: flex;
   flex-direction: column;
@@ -127,6 +132,7 @@ a {
   font-weight: 600;
   color: #f7f7f7;
 }
+
 .heroText h2 {
   font-size: 24px;
   line-height: 32px;
@@ -134,8 +140,9 @@ a {
   color: #f7f7f7;
 }
 
-
-/* ===== BUTTON ===== */
+/* =========================
+   BUTTONS
+========================= */
 
 .primaryBtn {
   width: 173px;
@@ -151,11 +158,14 @@ a {
   font-weight: 500;
   font-size: 16px;
   color: #ffffff;
+  border: none;
+  cursor: pointer;
 }
 
 /* =========================
    CATALOG PAGE LAYOUT
 ========================= */
+
 .catalogPage {
   width: 100%;
   display: flex;
@@ -164,26 +174,30 @@ a {
 
 .catalogInner {
   width: 1440px;
-  padding: 120px 64px 64px;
+  padding: 120px 64px 148px;
+
   display: flex;
   gap: 64px;
-  box-sizing: border-box;
 }
 
-/* LEFT COLUMN */
+/* LEFT COLUMN (FILTERS) */
 .catalogFilters {
   width: 360px;
   flex-shrink: 0;
-}
 
-/* RIGHT COLUMN */
-.catalogContent {
-  width: 888px;
-}
-
-/* CARDS STACK */
-.catalogCards {
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+/* RIGHT COLUMN (CARDS) */
+.catalogContent {
+  flex: 1;
+}
+
+/* STACK OF CARDS */
+.catalogCards {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
