@@ -5,7 +5,7 @@ import {
   setVehicleType,
 } from "../../redux/filtersSlice";
 
-import styles from "./filters.module.css";
+import styles from "./Filters.module.css";
 import mapIcon from "../../assets/images/map.svg";
 
 export default function Filters() {
