@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCamperById } from "../api/campersApi";
+
 import Gallery from "../components/Gallery/Gallery";
 import Features from "../components/Features/Features";
 import Reviews from "../components/Reviews/Reviews";
@@ -8,27 +9,70 @@ import BookingForm from "../components/BookingForm/BookingForm";
 
 export default function CamperDetailsPage() {
   const { id } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeTab = searchParams.get("tab") || "features";
+
   const [camper, setCamper] = useState(null);
 
   useEffect(() => {
     getCamperById(id).then(setCamper);
   }, [id]);
 
-  if (!camper) return <p style={{ padding: 40 }}>Loading...</p>;
+  if (!camper) return <p className="details-loading">Loading...</p>;
 
   return (
-    <section style={{ padding: 40 }}>
-      <h2>{camper.name}</h2>
+    <section className="details-page">
+      {/* HEADER */}
+      <div className="details-header">
+        <h2 className="details-title">{camper.name}</h2>
 
+        <div className="details-meta">
+          <button
+            className="details-reviews-link"
+            onClick={() => setSearchParams({ tab: "reviews" })}
+          >
+            ⭐ {camper.rating} ({camper.reviews.length} Reviews)
+          </button>
+
+          <span className="details-location">{camper.location}</span>
+        </div>
+
+        <p className="details-price">
+          € {camper.price.toFixed(2).replace(".", ",")}
+        </p>
+      </div>
+
+      {/* GALLERY */}
       <Gallery images={camper.gallery} />
 
-      <p>€ {camper.price.toFixed(2).replace(".", ",")}</p>
+      {/* TABS */}
+      <div className="details-tabs">
+        <button
+          className={`details-tab ${activeTab === "features" ? "active" : ""}`}
+          onClick={() => setSearchParams({ tab: "features" })}
+        >
+          Features
+        </button>
 
-      <Features camper={camper} />
+        <button
+          className={`details-tab ${activeTab === "reviews" ? "active" : ""}`}
+          onClick={() => setSearchParams({ tab: "reviews" })}
+        >
+          Reviews
+        </button>
+      </div>
 
-      <Reviews reviews={camper.reviews} />
+      {/* CONTENT */}
+      <div className="details-content">
+        <div className="details-left">
+          {activeTab === "features" && <Features camper={camper} />}
+          {activeTab === "reviews" && <Reviews reviews={camper.reviews} />}
+        </div>
 
-      <BookingForm />
+        <div className="details-right">
+          <BookingForm />
+        </div>
+      </div>
     </section>
   );
 }

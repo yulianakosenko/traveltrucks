@@ -28,7 +28,7 @@ img {
 }
 
 /* =========================
-   HEADER
+   HEADER (ONE AND ONLY)
 ========================= */
 
 .header {
@@ -46,11 +46,6 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
 }
 
 .logo img {
@@ -79,11 +74,9 @@ img {
 .hero {
   height: 696px;
   position: relative;
-
   background-image:
     linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
     url("../assets/Images/homepctr.jpg");
-
   background-size: cover;
   background-position: center;
 }
@@ -93,20 +86,6 @@ img {
   height: 100%;
   margin: 0 auto;
   position: relative;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.3) 40%,
-    rgba(0, 0, 0, 0) 70%
-  );
 }
 
 .heroContent {
@@ -128,14 +107,12 @@ img {
 
 .heroText h1 {
   font-size: 48px;
-  line-height: 32px;
   font-weight: 600;
   color: #f7f7f7;
 }
 
 .heroText h2 {
   font-size: 24px;
-  line-height: 32px;
   font-weight: 600;
   color: #f7f7f7;
 }
@@ -154,20 +131,19 @@ img {
 
   background: #e44848;
   border-radius: 200px;
-
-  font-weight: 500;
-  font-size: 16px;
-  color: #ffffff;
   border: none;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
   cursor: pointer;
 }
 
 /* =========================
-   CATALOG PAGE LAYOUT
+   CATALOG PAGE
 ========================= */
 
 .catalogPage {
-  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -180,7 +156,7 @@ img {
   gap: 64px;
 }
 
-/* LEFT COLUMN (FILTERS) */
+/* Filters */
 .catalogFilters {
   width: 360px;
   flex-shrink: 0;
@@ -190,14 +166,89 @@ img {
   gap: 32px;
 }
 
-/* RIGHT COLUMN (CARDS) */
+/* Cards */
 .catalogContent {
   flex: 1;
 }
 
-/* STACK OF CARDS */
 .catalogCards {
   display: flex;
   flex-direction: column;
   gap: 48px;
+}
+
+/* =========================
+   CAMPER DETAILS PAGE
+========================= */
+
+.details-page {
+  padding: 120px 120px 148px;
+}
+
+/* Header */
+.details-header {
+  margin-bottom: 32px;
+}
+
+.details-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.details-meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.details-reviews-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.details-price {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* Tabs */
+.details-tabs {
+  display: flex;
+  gap: 24px;
+  margin-top: 40px;
+  border-bottom: 1px solid #dadde1;
+}
+
+.details-tab {
+  background: none;
+  border: none;
+  padding-bottom: 12px;
+  font-size: 20px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.details-tab.active {
+  border-color: #e44848;
+}
+
+/* Content */
+.details-content {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.details-left {
+  flex: 1;
+}
+
+.details-right {
+  width: 448px;
 }

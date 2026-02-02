@@ -1,5 +1,7 @@
 import styles from "./CamperCard.module.css";
 import Gallery from "../Gallery/Gallery";
+import { Link } from "react-router-dom";
+
 
 export default function CamperCard({ camper }) {
   if (!camper) return null;
@@ -24,9 +26,12 @@ export default function CamperCard({ camper }) {
           </div>
 
           <div className={styles.meta}>
-            <span>
-              ⭐ {camper.rating} ({camper.reviews.length} Reviews)
-            </span>
+            <Link
+              to={`/catalog/${camper.id}#reviews`}
+              className={styles.reviewsLink}
+            >
+              {camper.rating} ({camper.reviews.length} Reviews)
+            </Link>
             <span>📍 {camper.location}</span>
           </div>
 
@@ -41,7 +46,9 @@ export default function CamperCard({ camper }) {
             {camper.bathroom && <span>Bathroom</span>}
           </div>
 
-          <button className={styles.showMore}>Show more</button>
+          <Link to={`/catalog/${camper.id}`} className={styles.showMore}>
+            Show more
+          </Link>
         </div>
       </div>
     </article>
