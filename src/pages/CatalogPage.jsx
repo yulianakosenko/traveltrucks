@@ -1,22 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCampers, incrementPage } from "../redux/campersSlice";
+import { fetchCampers } from "../redux/campersSlice";
 import CamperCard from "../components/CamperCard/CamperCard";
 import Filters from "../components/Filters/Filters";
-import CamperSkeleton from "../components/Skeleton/CamperSkeleton";
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
-  const { items, isLoading } = useSelector((state) => state.campers);
+  const { items = [], isLoading } = useSelector((state) => state.campers);
 
   useEffect(() => {
     dispatch(fetchCampers());
   }, [dispatch]);
-
-  const loadMore = () => {
-    dispatch(incrementPage());
-    dispatch(fetchCampers());
-  };
 
   return (
     <section className="catalogPage">
@@ -28,7 +22,7 @@ export default function CatalogPage() {
 
         {/* RIGHT */}
         <div className="catalogContent">
-          {isLoading && <CamperSkeleton />}
+          {isLoading && <p>Loading...</p>}
 
           {!isLoading && items.length === 0 && <p>No campers found</p>}
 
@@ -37,12 +31,6 @@ export default function CatalogPage() {
               <CamperCard key={camper.id} camper={camper} />
             ))}
           </div>
-
-          {items.length > 0 && (
-            <button className="loadMoreBtn" onClick={loadMore}>
-              Load more
-            </button>
-          )}
         </div>
       </div>
     </section>

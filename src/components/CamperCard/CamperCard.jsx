@@ -16,7 +16,7 @@ export default function CamperCard({ camper }) {
             <h2 className={styles.title}>{camper.name}</h2>
 
             <div className={styles.price}>
-              <span>€{camper.price}</span>
+              <span>€{camper.price.toFixed(2)}</span>
               <button className={styles.favoriteBtn} aria-label="favorite" />
             </div>
           </div>
@@ -26,7 +26,7 @@ export default function CamperCard({ camper }) {
             <div className={styles.reviews}>
               <span className={styles.starIcon} />
               <span>
-                {camper.rating} ({camper.reviews})
+                {camper.rating} ({camper.reviews.length} Reviews)
               </span>
             </div>
 
@@ -39,12 +39,18 @@ export default function CamperCard({ camper }) {
           {/* DESCRIPTION */}
           <p className={styles.description}>{camper.description}</p>
 
-          {/* BADGES */}
+          {/* BADGES — ТІЛЬКИ ПРИМІТИВИ */}
           <div className={styles.badges}>
-            <span className={styles.badge}>AC</span>
-            <span className={styles.badge}>Petrol</span>
-            <span className={styles.badge}>Kitchen</span>
-            <span className={styles.badge}>TV</span>
+            {camper.transmission && (
+              <span className={styles.badge}>{camper.transmission}</span>
+            )}
+            {camper.engine && (
+              <span className={styles.badge}>{camper.engine}</span>
+            )}
+            {camper.kitchen && <span className={styles.badge}>Kitchen</span>}
+            {camper.AC && <span className={styles.badge}>AC</span>}
+            {camper.TV && <span className={styles.badge}>TV</span>}
+            {camper.bathroom && <span className={styles.badge}>Bathroom</span>}
           </div>
 
           {/* BUTTON */}

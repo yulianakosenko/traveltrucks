@@ -1,27 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  location: "",
+  equipment: [], // ⬅️ МАСИВ
+  vehicleType: "",
+};
+
 const filtersSlice = createSlice({
   name: "filters",
-  initialState: {
-    location: "",
-    form: "",
-    AC: false,
-    kitchen: false,
-  },
+  initialState,
   reducers: {
-    setFilter(state, action) {
-      state[action.payload.name] = action.payload.value;
+    setLocation(state, action) {
+      state.location = action.payload;
     },
-    resetFilters() {
-      return {
-        location: "",
-        form: "",
-        AC: false,
-        kitchen: false,
-      };
+    toggleEquipment(state, action) {
+      const item = action.payload;
+      state.equipment = state.equipment.includes(item)
+        ? state.equipment.filter((i) => i !== item)
+        : [...state.equipment, item];
+    },
+    setVehicleType(state, action) {
+      state.vehicleType = action.payload;
     },
   },
 });
 
-export const { setFilter, resetFilters } = filtersSlice.actions;
+export const { setLocation, toggleEquipment, setVehicleType } =
+  filtersSlice.actions;
+
 export default filtersSlice.reducer;
