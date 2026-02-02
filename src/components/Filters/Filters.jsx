@@ -6,7 +6,6 @@ import {
 } from "../../redux/filtersSlice";
 
 import styles from "./Filters.module.css";
-import mapIcon from "../../assets/images/map.svg";
 
 export default function Filters() {
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ export default function Filters() {
       <div className={styles.filterBlock}>
         <p className={styles.filterSubtitle}>Location</p>
         <div className={styles.locationInput}>
-          <img src={mapIcon} alt="" />
+          <img src="/icons/map.svg" alt="Map" />
           <input
             value={location}
             placeholder="Kyiv, Ukraine"
@@ -36,14 +35,21 @@ export default function Filters() {
       <div className={styles.filterSection}>
         <h3>Vehicle equipment</h3>
         <div className={styles.filterRow}>
-          {["AC", "Automatic", "Kitchen", "TV", "Bathroom"].map((item) => (
+          {[
+            { label: "AC", icon: "/icons/wind.svg" },
+            { label: "Automatic", icon: "/icons/diagram11.svg" },
+            { label: "Kitchen", icon: "/icons/cuphot.svg" },
+            { label: "TV", icon: "/icons/tv.svg" },
+            { label: "Bathroom", icon: "/icons/ph_shower.svg" },
+          ].map(({ label, icon }) => (
             <button
-              key={item}
-              className={equipment.includes(item) ? styles.active : ""}
-              onClick={() => dispatch(toggleEquipment(item))}
+              key={label}
+              className={equipment.includes(label) ? styles.active : ""}
+              onClick={() => dispatch(toggleEquipment(label))}
               type="button"
             >
-              {item}
+              <img src={icon} alt={label} className={styles.icon} />
+              <span>{label}</span>
             </button>
           ))}
         </div>
@@ -53,14 +59,19 @@ export default function Filters() {
       <div className={styles.filterSection}>
         <h3>Vehicle type</h3>
         <div className={styles.filterRow}>
-          {["van", "fully", "alcove"].map((type) => (
+          {[
+            { label: "Van", icon: "/icons/bi_grid-1x2.svg" },
+            { label: "Fully integrated", icon: "/icons/bi_grid.svg" },
+            { label: "Alcove", icon: "/icons/bi_grid-3x3-gap.svg" },
+          ].map(({ label, icon }) => (
             <button
-              key={type}
-              className={vehicleType === type ? styles.active : ""}
-              onClick={() => dispatch(setVehicleType(type))}
+              key={label}
+              className={vehicleType === label ? styles.active : ""}
+              onClick={() => dispatch(setVehicleType(label))}
               type="button"
             >
-              {type}
+              <img src={icon} alt={label} className={styles.icon} />
+              <span>{label}</span>
             </button>
           ))}
         </div>

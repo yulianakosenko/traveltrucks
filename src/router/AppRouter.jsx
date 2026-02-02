@@ -10,7 +10,7 @@ export default function AppRouter() {
       <header className="header">
         <div className="headerInner">
           <NavLink to="/" className="logo">
-            <img src="/logo.svg" alt="Logo" />
+            <img src="/icons/logo.svg" alt="Logo" />
           </NavLink>
 
           <nav className="nav">

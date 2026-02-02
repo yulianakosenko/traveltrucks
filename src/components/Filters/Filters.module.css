@@ -30,7 +30,7 @@
 }
 
 .locationInput input {
-  width: 360px;
+  width: 100%;
   height: 56px;
   padding: 18px 20px 18px 44px;
 
@@ -47,18 +47,13 @@
   color: #101828;
 }
 
-.locationIcon {
+.locationInput img {
   position: absolute;
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-
   width: 20px;
   height: 20px;
-
-  background-color: #101828;
-  mask: url("../../assets/images/map.svg") no-repeat center;
-  -webkit-mask: url("../../assets/images/map.svg") no-repeat center;
 }
 
 /* =========================
@@ -78,44 +73,32 @@
 .filterSection {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
-.sectionTitle {
+.filterSection h3 {
   font-size: 20px;
   font-weight: 600;
   color: #101828;
 }
 
-.divider {
-  width: 360px;
-  height: 1px;
-  background: #dadde1;
-}
-
 /* =========================
-   GRID
+   GRID (BUTTONS)
 ========================= */
 
-.grid {
-  display: flex;
-  flex-direction: column;
+.filterRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
-.row {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
 /* =========================
-   FILTER ITEM
+   FILTER BUTTON
 ========================= */
 
-.item {
-  width: 112px;
+.filterRow button {
   height: 96px;
+  padding: 12px 8px;
 
   display: flex;
   flex-direction: column;
@@ -127,16 +110,25 @@
   border-radius: 12px;
   background: #ffffff;
 
+  font-size: 14px;
+  font-weight: 500;
+  color: #101828;
+
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.item:hover {
+.filterRow button:hover {
   border-color: #e44848;
 }
 
+/* =========================
+   ACTIVE STATE
+========================= */
+
 .active {
-  border: 1px solid #e44848;
+  border-color: #e44848;
+  background-color: #fff5f5;
 }
 
 /* =========================
@@ -146,83 +138,5 @@
 .icon {
   width: 32px;
   height: 32px;
-  background-color: #101828;
-}
-
-.wind {
-  mask: url("../../assets/images/Group11.svg") no-repeat center;
-  -webkit-mask: url("../../assets/images/Group11.svg") no-repeat center;
-}
-
-.diagram {
-  mask: url("../../assets/images/diagram11.svg") no-repeat center;
-  -webkit-mask: url("../../assets/images/diagram11.svg") no-repeat center;
-}
-
-.cuphot {
-  mask: url("../../assets/images/cuphot.svg") no-repeat center;
-  -webkit-mask: url("../../assets/images/cuphot.svg") no-repeat center;
-}
-
-.tv {
-  mask: url("../../assets/images/tv.svg") no-repeat center;
-  -webkit-mask: url("../../assets/images/tv.svg") no-repeat center;
-}
-
-.shower {
-  mask: url("../../assets/images/ph_shower.svg") no-repeat center;
-  -webkit-mask: url("../../assets/images/ph_shower.svg") no-repeat center;
-}
-
-.van {
-  mask: url("../../assets/images/bi_grid-1x2.svg") no-repeat center;
-  -webkit-mask: url("../../assets/images/bi_grid-1x2.svg") no-repeat center;
-}
-
-.fully {
-  mask: url("../../assets/images/bi_grid.svg") no-repeat center;
-  -webkit-mask: url("../../assets/images/bi_grid.svg") no-repeat center;
-}
-
-.alcove {
-  mask: url("../../assets/images/bi_grid-3x3-gap.svg") no-repeat center;
-  -webkit-mask: url("../../assets/images/bi_grid-3x3-gap.svg") no-repeat center;
-}
-
-/* =========================
-   LABEL
-========================= */
-
-.label {
-  font-size: 16px;
-  font-weight: 500;
-  color: #101828;
-  text-align: center;
-}
-
-/* =========================
-   SEARCH BUTTON
-========================= */
-
-.searchBtn {
-  width: 166px;
-  height: 56px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #e44848;
-  border-radius: 200px;
-  border: none;
-
-  font-size: 16px;
-  font-weight: 500;
-  color: #ffffff;
-
-  cursor: pointer;
-}
-
-.searchBtn:hover {
-  background: #d84343;
+  object-fit: contain;
 }
