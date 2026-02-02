@@ -6,38 +6,62 @@ export default function BookingForm() {
     name: "",
     email: "",
     date: "",
+    comments: "",
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     alert("Booking successful!");
-    setForm({ name: "", email: "", date: "" });
+
+    setForm({
+      name: "",
+      email: "",
+      date: "",
+      comments: "",
+    });
   };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h3>Book your camper</h3>
+      <h3 className={styles.title}>Book your camper</h3>
 
       <input
-        placeholder="Name"
+        name="name"
+        placeholder="Name*"
         value={form.name}
-        onChange={(e) => setForm({ ...form, name: e.target.value })}
+        onChange={handleChange}
         required
       />
 
       <input
+        name="email"
         type="email"
-        placeholder="Email"
+        placeholder="Email*"
         value={form.email}
-        onChange={(e) => setForm({ ...form, email: e.target.value })}
+        onChange={handleChange}
         required
       />
 
       <input
+        name="date"
         type="date"
         value={form.date}
-        onChange={(e) => setForm({ ...form, date: e.target.value })}
+        onChange={handleChange}
         required
+      />
+
+      <textarea
+        name="comments"
+        placeholder="Comment"
+        value={form.comments}
+        onChange={handleChange}
+        rows={4}
       />
 
       <button type="submit">Send</button>

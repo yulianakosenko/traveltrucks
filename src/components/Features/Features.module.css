@@ -1,25 +1,85 @@
 .wrapper {
-  margin-bottom: 32px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 44px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
 }
 
-.list {
+/* ======================
+   BADGES (FEATURES)
+====================== */
+
+.badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 8px;
+  width: 527px;
 }
 
-.list span {
-  padding: 8px 14px;
-  background: var(--badge-bg);
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 12px 18px;
+  height: 48px;
+
+  background: #DADDE1;
   border-radius: 100px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #101828;
 }
+
+.badge img {
+  width: 20px;
+  height: 20px;
+}
+
+/* ======================
+   VEHICLE DETAILS
+====================== */
+
+.vehicle {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 527px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #101828;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #dadde1;
+}
+
+/* DETAILS LIST */
 
 .details {
   list-style: none;
   padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .details li {
-  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #101828;
 }
