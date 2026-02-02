@@ -1,55 +1,142 @@
 .card {
-  display: flex;
-  gap: 20px;
-  border: 1px solid var(--gray-light);
-  border-radius: 20px;
-  padding: 16px;
-  margin-bottom: 24px;
-}
+  width: 888px;
+  height: 368px;
+  padding: 24px;
 
-.image {
-  width: 220px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #dadde1;
+  border-radius: 20px;
 }
 
 .content {
-  flex: 1;
+  display: flex;
+  gap: 24px;
+  height: 320px;
 }
 
-.header {
+/* IMAGE */
+.imageWrap {
+  width: 292px;
+  height: 320px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* INFO */
+.info {
+  width: 524px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* TITLE */
+.titleRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.favorite {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.location {
-  color: var(--text);
-  margin: 8px 0;
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #101828;
 }
 
 .price {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: 12px;
 }
 
-.more {
-  padding: 12px 24px;
-  border-radius: 200px;
+.favoriteBtn {
+  width: 24px;
+  height: 24px;
+  background: #101828;
+  mask: url("/icons/heart.svg") no-repeat center;
+  -webkit-mask: url("/icons/heart.svg") no-repeat center;
   border: none;
-  background: var(--primary);
-  color: white;
   cursor: pointer;
 }
 
-.more:hover {
-  background: var(--primary-hover);
+/* META */
+.meta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.reviews,
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+  background: #ffc531;
+  mask: url("/icons/star.svg") no-repeat center;
+  -webkit-mask: url("/icons/star.svg") no-repeat center;
+}
+
+.mapIcon {
+  width: 16px;
+  height: 16px;
+  background: #101828;
+  mask: url("/icons/map.svg") no-repeat center;
+  -webkit-mask: url("/icons/map.svg") no-repeat center;
+}
+
+/* DESCRIPTION */
+.description {
+  font-size: 16px;
+  color: #475467;
+  line-height: 24px;
+}
+
+/* BADGES */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  padding: 12px 18px;
+  background: #f2f4f7;
+  border-radius: 100px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #101828;
+}
+
+/* BUTTON */
+.showMore {
+  margin-top: auto;
+
+  width: 166px;
+  height: 56px;
+
+  background: #e44848;
+  border-radius: 200px;
+  border: none;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+
+  cursor: pointer;
 }

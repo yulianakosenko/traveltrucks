@@ -20,7 +20,6 @@ export default function AppRouter() {
   </div>
 </header>
 
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />

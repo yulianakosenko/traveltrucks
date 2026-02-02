@@ -1,45 +1,56 @@
 import styles from "./CamperCard.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleFavorite } from "../../redux/favoritesSlice";
 
 export default function CamperCard({ camper }) {
-  const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.favorites.items);
-
-  const isFavorite = favorites.includes(camper.id);
-
   return (
-    <div className={styles.card}>
-      <img
-        src={camper.gallery?.[0]}
-        alt={camper.name}
-        className={styles.image}
-      />
-
+    <article className={styles.card}>
       <div className={styles.content}>
-        <div className={styles.header}>
-          <h3>{camper.name}</h3>
-          <button
-            className={styles.favorite}
-            onClick={() => dispatch(toggleFavorite(camper.id))}
-          >
-            {isFavorite ? "❤️" : "🤍"}
-          </button>
+        {/* IMAGE */}
+        <div className={styles.imageWrap}>
+          <img src={camper.image} alt={camper.name} />
         </div>
 
-        <p className={styles.location}>{camper.location}</p>
+        {/* INFO */}
+        <div className={styles.info}>
+          {/* TITLE + PRICE */}
+          <div className={styles.titleRow}>
+            <h2 className={styles.title}>{camper.name}</h2>
 
-        <p className={styles.price}>
-          € {camper.price.toFixed(2).replace(".", ",")}
-        </p>
+            <div className={styles.price}>
+              <span>€{camper.price}</span>
+              <button className={styles.favoriteBtn} aria-label="favorite" />
+            </div>
+          </div>
 
-        <button
-          className={styles.more}
-          onClick={() => window.open(`/catalog/${camper.id}`, "_blank")}
-        >
-          Show more
-        </button>
+          {/* META */}
+          <div className={styles.meta}>
+            <div className={styles.reviews}>
+              <span className={styles.starIcon} />
+              <span>
+                {camper.rating} ({camper.reviews})
+              </span>
+            </div>
+
+            <div className={styles.location}>
+              <span className={styles.mapIcon} />
+              <span>{camper.location}</span>
+            </div>
+          </div>
+
+          {/* DESCRIPTION */}
+          <p className={styles.description}>{camper.description}</p>
+
+          {/* BADGES */}
+          <div className={styles.badges}>
+            <span className={styles.badge}>AC</span>
+            <span className={styles.badge}>Petrol</span>
+            <span className={styles.badge}>Kitchen</span>
+            <span className={styles.badge}>TV</span>
+          </div>
+
+          {/* BUTTON */}
+          <button className={styles.showMore}>Show more</button>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }

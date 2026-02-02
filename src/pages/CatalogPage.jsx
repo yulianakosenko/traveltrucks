@@ -19,24 +19,32 @@ export default function CatalogPage() {
   };
 
   return (
-    <section className="container">
-      <Filters />
+    <section className="catalogPage">
+      <div className="catalogInner">
+        {/* LEFT */}
+        <aside className="catalogFilters">
+          <Filters />
+        </aside>
 
-      {isLoading && <CamperSkeleton />}
+        {/* RIGHT */}
+        <div className="catalogContent">
+          {isLoading && <CamperSkeleton />}
 
-      {!isLoading && items.length === 0 && (
-        <p>No campers found. Try changing filters.</p>
-      )}
+          {!isLoading && items.length === 0 && <p>No campers found</p>}
 
-      {items.map((camper) => (
-        <CamperCard key={camper.id} camper={camper} />
-      ))}
+          <div className="catalogCards">
+            {items.map((camper) => (
+              <CamperCard key={camper.id} camper={camper} />
+            ))}
+          </div>
 
-      {items.length > 0 && (
-        <button className="loadMoreBtn" onClick={loadMore}>
-          Load more
-        </button>
-      )}
+          {items.length > 0 && (
+            <button className="loadMoreBtn" onClick={loadMore}>
+              Load more
+            </button>
+          )}
+        </div>
+      </div>
     </section>
   );
 }
