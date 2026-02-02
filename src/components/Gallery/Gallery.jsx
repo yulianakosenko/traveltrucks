@@ -1,11 +1,9 @@
-import styles from "./Gallery.module.css";
-
 export default function Gallery({ images = [] }) {
-  return (
-    <div className={styles.gallery}>
-      {images.map((img, index) => (
-        <img key={index} src={img} alt="" />
-      ))}
-    </div>
-  );
+  if (!Array.isArray(images) || images.length === 0) return null;
+
+  const firstImage = images[0];
+
+  const src = typeof firstImage === "string" ? firstImage : firstImage.thumb;
+
+  return <img src={src} alt="Camper" />;
 }
