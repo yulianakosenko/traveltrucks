@@ -7,7 +7,7 @@ export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
   async () => {
     const response = await axios.get(API_URL);
-    return response.data; // <-- ТІЛЬКИ МАСИВ
+    return response.data; 
   },
 );
 

@@ -67,6 +67,11 @@ export default function CamperCard({ camper }) {
             {camper.AC && <span>AC</span>}
             {camper.TV && <span>TV</span>}
             {camper.bathroom && <span>Bathroom</span>}
+            {camper.gas && <span>Gas</span>}
+            {camper.water && <span>Water</span>}
+            {camper.microwave && <span>Microwave</span>}
+            {camper.radio && <span>Radio</span>}
+            {camper.refrigerator && <span>Fridge</span>}
           </div>
 
           <Link to={`/catalog/${camper.id}`} className={styles.showMore}>

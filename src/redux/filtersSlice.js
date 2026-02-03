@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   location: "",
-  equipment: [], // ⬅️ МАСИВ
+  equipment: [], 
   vehicleType: "",
 };
 

@@ -7,6 +7,7 @@ const FEATURES = [
   { key: "kitchen", label: "Kitchen", icon: "/icons/cuphot.svg" },
   { key: "TV", label: "TV", icon: "/icons/tv.svg" },
   { key: "bathroom", label: "Bathroom", icon: "/icons/ph_shower.svg" },
+  { key: "refrigerator", label: "Fridge", icon: "/icons/fridge.svg" },
 ];
 
 const DETAILS = [
@@ -34,6 +35,7 @@ export default function Features({ camper }) {
               </span>
             ),
         )}
+        
       </div>
 
       {/* VEHICLE DETAILS */}

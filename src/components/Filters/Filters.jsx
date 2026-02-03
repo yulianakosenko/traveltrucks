@@ -19,6 +19,7 @@ const EQUIPMENT = [
   { label: "Kitchen", value: "kitchen", icon: "/icons/cuphot.svg" },
   { label: "TV", value: "TV", icon: "/icons/tv.svg" },
   { label: "Bathroom", value: "bathroom", icon: "/icons/ph_shower.svg" },
+ 
 ];
 
 const VEHICLE_TYPES = [
