@@ -159,6 +159,7 @@ img {
   gap: 64px;
 }
 
+
 /* Filters */
 .catalogFilters {
   width: 360px;
@@ -257,4 +258,30 @@ img {
 
 .details-right {
   width: 448px;
+}
+.loadMore {
+  display: block;
+  margin: 40px auto 0;
+  padding: 14px 32px;
+
+  background-color: #ffffff;
+  border: 1px solid #101828;
+  border-radius: 200px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #101828;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.loadMore:hover {
+  background-color: #101828;
+  color: #ffffff;
+}
+
+.loadMore:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
