@@ -74,9 +74,14 @@ export default function CamperCard({ camper }) {
             {camper.refrigerator && <span>Fridge</span>}
           </div>
 
-          <Link to={`/catalog/${camper.id}`} className={styles.showMore}>
+          <a
+            href={`/catalog/${camper.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.showMore}
+          >
             Show more
-          </Link>
+          </a>
         </div>
       </div>
     </article>
