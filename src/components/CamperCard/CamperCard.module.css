@@ -45,6 +45,10 @@
 .price {
   font-size: 24px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+
 }
 
 .meta {
@@ -80,3 +84,36 @@
   align-items: center;
   justify-content: center;
 }
+.favoriteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.favoriteBtn img {
+  width: 24px;
+  height: 24px;
+}
+
+.favoriteBtn.active img {
+  filter: invert(36%) sepia(88%) saturate(7490%) hue-rotate(350deg);
+  
+}
+.savedBadge {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #e44848;
+
+  background: #fff5f5;
+  padding: 4px 10px;
+  border-radius: 20px;
+
+  text-decoration: none;
+}
+
+.savedBadge:hover {
+  text-decoration: underline;
+}
+
