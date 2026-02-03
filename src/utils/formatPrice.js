@@ -1,6 +1,3 @@
 export function formatPrice(value) {
-  return Number(value).toLocaleString("de-DE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+  return Number(value).toFixed(2).replace(".", ",");
 }
