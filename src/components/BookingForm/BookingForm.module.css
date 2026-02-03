@@ -1,73 +1,64 @@
-.form {
-  width: 448px;
-  padding: 44px 32px;
-  background: #f7f7f7;
+.wrapper {
+  border: 1px solid #dadde1;
   border-radius: 10px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  padding: 24px;
+  background-color: #ffffff;
 }
 
-/* TITLE */
 .title {
   font-size: 20px;
   font-weight: 600;
+  margin-bottom: 4px;
   color: #101828;
-  margin-bottom: 8px;
 }
 
-/* INPUTS + TEXTAREA */
-.form input,
-.form textarea {
+.subtitle {
+  font-size: 14px;
+  color: #475467;
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input,
+.textarea {
   width: 100%;
-  padding: 16px 18px;
-
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 16px;
-  color: #101828;
-
-  background: #ffffff;
-  border: 1px solid #dadde1;
+  padding: 14px 16px;
   border-radius: 10px;
-
-  outline: none;
+  border: none;
+  background-color: #f7f7f7;
+  font-size: 14px;
+  color: #101828;
 }
 
-/* PLACEHOLDER */
-.form input::placeholder,
-.form textarea::placeholder {
-  color: #667085;
+.input::placeholder,
+.textarea::placeholder {
+  color: #98a2b3;
 }
 
-/* FOCUS */
-.form input:focus,
-.form textarea:focus {
-  border-color: #e44848;
-}
-
-/* TEXTAREA */
-.form textarea {
-  resize: none;
-  min-height: 118px;
-}
-
-/* BUTTON */
-.form button {
-  margin-top: 8px;
-  height: 56px;
-
-  background: #e44848;
+.submit {
+  margin: 24px auto 0;
+  padding: 14px 40px;
   border-radius: 200px;
   border: none;
-
+  background-color: #e44848;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 500;
-  color: #ffffff;
-
   cursor: pointer;
 }
 
-.form button:hover {
-  background: #d63f3f;
+.submit:hover {
+  background-color: #d73737;
+}
+
+.successMessage {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #039855;
+  text-align: center;
 }

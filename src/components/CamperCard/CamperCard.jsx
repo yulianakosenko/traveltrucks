@@ -1,7 +1,7 @@
 import styles from "./CamperCard.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import { formatPrice } from "../../utils/formatPrice";
 import { toggleFavorite } from "../../redux/favoritesSlice";
 import CamperBadges from "../CamperBadges/CamperBadges";
 
@@ -34,7 +34,7 @@ export default function CamperCard({ camper }) {
             )}
 
             <div className={styles.price}>
-              <span>€{camper.price.toFixed(2)}</span>
+              <span>€{formatPrice(camper.price)}</span>
 
               {/* FAVORITE BUTTON */}
               <button

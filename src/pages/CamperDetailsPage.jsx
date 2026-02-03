@@ -1,7 +1,7 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCamperById } from "../api/campersApi";
-
+import { formatPrice } from "../utils/formatPrice";
 import Gallery from "../components/Gallery/Gallery";
 import Features from "../components/Features/Features";
 import Reviews from "../components/Reviews/Reviews";
@@ -37,13 +37,12 @@ export default function CamperDetailsPage() {
           <span className="details-location">{camper.location}</span>
         </div>
 
-        <p className="details-price">
-          € {camper.price.toFixed(2).replace(".", ",")}
-        </p>
+        <p className="details-price">€{formatPrice(camper.price)}</p>
       </div>
 
       {/* GALLERY */}
       <Gallery images={camper.gallery} />
+      <p className="details-description">{camper.description}</p>
 
       {/* TABS */}
       <div className="details-tabs">

@@ -2,69 +2,50 @@ import { useState } from "react";
 import styles from "./BookingForm.module.css";
 
 export default function BookingForm() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    date: "",
-    comments: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    alert("Booking successful!");
-
-    setForm({
-      name: "",
-      email: "",
-      date: "",
-      comments: "",
-    });
+    setSuccess(true);
+    e.target.reset();
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <h3 className={styles.title}>Book your camper</h3>
+    <div className={styles.wrapper}>
+      <h3 className={styles.title}>Book your campervan now</h3>
+      <p className={styles.subtitle}>
+        Stay connected! We are always ready to help you.
+      </p>
 
-      <input
-        name="name"
-        placeholder="Name*"
-        value={form.name}
-        onChange={handleChange}
-        required
-      />
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Name*"
+          required
+          className={styles.input}
+        />
 
-      <input
-        name="email"
-        type="email"
-        placeholder="Email*"
-        value={form.email}
-        onChange={handleChange}
-        required
-      />
+        <input
+          type="email"
+          placeholder="Email*"
+          required
+          className={styles.input}
+        />
 
-      <input
-        name="date"
-        type="date"
-        value={form.date}
-        onChange={handleChange}
-        required
-      />
+        <input type="date" required className={styles.input} />
 
-      <textarea
-        name="comments"
-        placeholder="Comment"
-        value={form.comments}
-        onChange={handleChange}
-        rows={4}
-      />
+        <textarea placeholder="Comment" rows="4" className={styles.textarea} />
 
-      <button type="submit">Send</button>
-    </form>
+        <button type="submit" className={styles.submit}>
+          Send
+        </button>
+
+        {success && (
+          <p className={styles.successMessage}>
+            Booking request sent successfully!
+          </p>
+        )}
+      </form>
+    </div>
   );
 }
