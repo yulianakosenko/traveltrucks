@@ -1,13 +1,32 @@
 import styles from "./Features.module.css";
 
 const FEATURES = [
-  { key: "transmission", label: "Automatic", icon: "/icons/diagram11.svg" },
-  { key: "engine", label: "Petrol", icon: "/icons/fuel-pump.svg" },
-  { key: "AC", label: "AC", icon: "/icons/wind.svg" },
-  { key: "kitchen", label: "Kitchen", icon: "/icons/cuphot.svg" },
-  { key: "TV", label: "TV", icon: "/icons/tv.svg" },
-  { key: "bathroom", label: "Bathroom", icon: "/icons/ph_shower.svg" },
-  { key: "refrigerator", label: "Fridge", icon: "/icons/fridge.svg" },
+  {
+    key: "transmission",
+    getLabel: (value) => (value === "automatic" ? "Automatic" : value),
+    icon: "/icons/diagram11.svg",
+  },
+  {
+    key: "engine",
+    getLabel: (value) => (value === "diesel" ? "Diesel" : "Petrol"),
+    icon: "/icons/fuel-pump.svg",
+  },
+  { key: "AC", getLabel: () => "AC", icon: "/icons/wind.svg" },
+  { key: "kitchen", getLabel: () => "Kitchen", icon: "/icons/cuphot.svg" },
+  { key: "TV", getLabel: () => "TV", icon: "/icons/tv.svg" },
+  { key: "bathroom", getLabel: () => "Bathroom", icon: "/icons/ph_shower.svg" },
+  {
+    key: "refrigerator",
+    getLabel: () => "Fridge",
+    icon: "/icons/fridge.svg",
+  },
+  {
+    key: "microwave",
+    getLabel: () => "Microwave",
+    icon: "/icons/microwave.svg",
+  },
+  { key: "gas", getLabel: () => "Gas", icon: "/icons/gas.svg" },
+  { key: "water", getLabel: () => "Water", icon: "/icons/water.svg" },
 ];
 
 const DETAILS = [
@@ -26,16 +45,17 @@ export default function Features({ camper }) {
     <div className={styles.wrapper}>
       {/* FEATURES */}
       <div className={styles.badges}>
-        {FEATURES.map(
-          ({ key, label, icon }) =>
-            camper[key] && (
-              <span key={key} className={styles.badge}>
-                <img src={icon} alt="" />
-                {label}
-              </span>
-            ),
-        )}
-        
+        {FEATURES.map(({ key, getLabel, icon }) => {
+          const value = camper[key];
+          if (!value) return null;
+
+          return (
+            <span key={key} className={styles.badge}>
+              <img src={icon} alt="" />
+              {getLabel(value)}
+            </span>
+          );
+        })}
       </div>
 
       {/* VEHICLE DETAILS */}

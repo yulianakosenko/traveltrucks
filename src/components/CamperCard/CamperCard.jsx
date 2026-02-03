@@ -1,7 +1,9 @@
 import styles from "./CamperCard.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import { toggleFavorite } from "../../redux/favoritesSlice";
+import CamperBadges from "../CamperBadges/CamperBadges";
 
 export default function CamperCard({ camper }) {
   if (!camper) return null;
@@ -24,7 +26,7 @@ export default function CamperCard({ camper }) {
           <div className={styles.titleRow}>
             <h2 className={styles.title}>{camper.name}</h2>
 
-            {/* ✅ FAVORITE BADGE */}
+            {/* FAVORITE BADGE */}
             {isFavorite && (
               <Link to="/favorites" className={styles.savedBadge}>
                 In favorites
@@ -34,7 +36,7 @@ export default function CamperCard({ camper }) {
             <div className={styles.price}>
               <span>€{camper.price.toFixed(2)}</span>
 
-              {/* ❤️ FAVORITE */}
+              {/* FAVORITE BUTTON */}
               <button
                 type="button"
                 className={`${styles.favoriteBtn} ${
@@ -60,19 +62,8 @@ export default function CamperCard({ camper }) {
 
           <p className={styles.description}>{camper.description}</p>
 
-          <div className={styles.badges}>
-            {camper.transmission && <span>{camper.transmission}</span>}
-            {camper.engine && <span>{camper.engine}</span>}
-            {camper.kitchen && <span>Kitchen</span>}
-            {camper.AC && <span>AC</span>}
-            {camper.TV && <span>TV</span>}
-            {camper.bathroom && <span>Bathroom</span>}
-            {camper.gas && <span>Gas</span>}
-            {camper.water && <span>Water</span>}
-            {camper.microwave && <span>Microwave</span>}
-            {camper.radio && <span>Radio</span>}
-            {camper.refrigerator && <span>Fridge</span>}
-          </div>
+          {/* ✅ ЄДИНІ BADGES */}
+          <CamperBadges camper={camper} />
 
           <a
             href={`/catalog/${camper.id}`}

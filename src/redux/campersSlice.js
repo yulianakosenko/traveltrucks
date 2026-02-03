@@ -7,18 +7,18 @@ export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
   async () => {
     const response = await axios.get(API_URL);
-    return response.data; 
+    return response.data;
   },
 );
 
 const campersSlice = createSlice({
   name: "campers",
   initialState: {
-  items: [],
-  total: 0,
-  isLoading: false,
-  error: null,
-},
+    items: [],
+    total: 0,
+    isLoading: false,
+    error: null,
+  },
   reducers: {},
   extraReducers: (builder) => {
     builder

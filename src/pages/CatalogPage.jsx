@@ -1,11 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { fetchCampers } from "../redux/campersSlice";
-import {
-  selectFilteredCampers,
-  selectIsLoading,
-} from "../redux/campersSelectors";
 
 import CamperCard from "../components/CamperCard/CamperCard";
 import Filters from "../components/Filters/Filters";
@@ -13,8 +8,7 @@ import Filters from "../components/Filters/Filters";
 export default function CatalogPage() {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector(selectIsLoading);
-  const items = useSelector(selectFilteredCampers);
+  const { items, isLoading } = useSelector((state) => state.campers);
 
   useEffect(() => {
     dispatch(fetchCampers());
