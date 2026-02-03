@@ -1,6 +1,6 @@
 import styles from "./CamperCard.module.css";
-import Gallery from "../Gallery/Gallery";
 import { Link } from "react-router-dom";
+
 
 
 export default function CamperCard({ camper }) {
@@ -11,7 +11,7 @@ export default function CamperCard({ camper }) {
       <div className={styles.content}>
         {/* IMAGE */}
         <div className={styles.imageWrap}>
-          <Gallery images={camper.gallery} />
+          <img src={camper.gallery?.[0]?.thumb} alt={camper.name} />
         </div>
 
         {/* INFO */}

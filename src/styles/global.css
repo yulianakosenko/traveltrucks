@@ -183,7 +183,10 @@ img {
 
 .details-page {
   padding: 120px 120px 148px;
+  max-width: 1440px;
+  margin: 0 auto;
 }
+
 
 /* Header */
 .details-header {
