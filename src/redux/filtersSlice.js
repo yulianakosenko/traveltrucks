@@ -20,7 +20,8 @@ const filtersSlice = createSlice({
         : [...state.equipment, item];
     },
     setVehicleType(state, action) {
-      state.vehicleType = action.payload;
+      const value = action.payload;
+      state.vehicleType = state.vehicleType === value ? "" : value;
     },
   },
 });

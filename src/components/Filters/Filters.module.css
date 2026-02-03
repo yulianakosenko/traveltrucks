@@ -126,7 +126,7 @@
    ACTIVE STATE
 ========================= */
 
-.active {
+.filterRow button.active {
   border-color: #e44848;
   background-color: #fff5f5;
 }
