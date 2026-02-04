@@ -34,7 +34,7 @@ export default function CamperDetailsPage() {
             ⭐ {camper.rating} ({camper.reviews.length} Reviews)
           </button>
 
-          <span className="details-location">{camper.location}</span>
+          <span className="details-location">📍{camper.location}</span>
         </div>
 
         <p className="details-price">€{formatPrice(camper.price)}</p>

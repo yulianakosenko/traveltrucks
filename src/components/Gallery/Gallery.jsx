@@ -5,8 +5,10 @@ export default function Gallery({ images = [] }) {
 
   return (
     <div className={styles.gallery}>
-      {images.map((img, index) => (
-        <img key={index} src={img.original} alt={`Camper ${index + 1}`} />
+      {images.slice(0, 4).map((img, index) => (
+        <div key={index} className={styles.imageWrap}>
+          <img src={img.original} alt={`Camper ${index + 1}`} />
+        </div>
       ))}
     </div>
   );

@@ -15,7 +15,7 @@ const campersSlice = createSlice({
   name: "campers",
   initialState: {
     items: [],
-    total: 0,
+    visibleCount: 4,
     isLoading: false,
     error: null,
   },

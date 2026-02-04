@@ -15,7 +15,7 @@ import styles from "./Filters.module.css";
    value — РЕАЛЬНЕ поле з API */
 const EQUIPMENT = [
   { label: "AC", value: "AC", icon: "/icons/wind.svg" },
-  { label: "Automatic", value: "transmission", icon: "/icons/diagram11.svg" },
+  { label: "Automatic", value: "automatic", icon: "/icons/diagram11.svg" },
   { label: "Kitchen", value: "kitchen", icon: "/icons/cuphot.svg" },
   { label: "TV", value: "TV", icon: "/icons/tv.svg" },
   { label: "Bathroom", value: "bathroom", icon: "/icons/ph_shower.svg" },

@@ -5,33 +5,63 @@ import { fetchCampers } from "../redux/campersSlice";
 import CamperCard from "../components/CamperCard/CamperCard";
 import Filters from "../components/Filters/Filters";
 
-const PAGE_SIZE = 4;
-
 export default function CatalogPage() {
   const dispatch = useDispatch();
-  const { items, isLoading } = useSelector((state) => state.campers);
 
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const { items, isLoading } = useSelector((state) => state.campers);
+  const { location, vehicleType, equipment } = useSelector(
+    (state) => state.filters,
+  );
+
+  const [visibleCount, setVisibleCount] = useState(4);
 
   useEffect(() => {
     dispatch(fetchCampers());
   }, [dispatch]);
 
-  const visibleItems = items.slice(0, visibleCount);
+  // ⬇️ при зміні фільтрів — скидаємо Load More
+  useEffect(() => {
+    setVisibleCount(4);
+  }, [location, vehicleType, equipment]);
+
+  const filteredItems = items.filter((camper) => {
+    if (
+      location &&
+      !camper.location.toLowerCase().includes(location.toLowerCase())
+    ) {
+      return false;
+    }
+
+    if (vehicleType && camper.form !== vehicleType) {
+      return false;
+    }
+
+    if (equipment.length > 0) {
+      for (const key of equipment) {
+        if (key === "automatic") {
+          if (camper.transmission !== "automatic") return false;
+        } else {
+          if (camper[key] !== true) return false;
+        }
+      }
+    }
+
+    return true;
+  });
+
+  const visibleItems = filteredItems.slice(0, visibleCount);
 
   return (
     <section className="catalogPage">
       <div className="catalogInner">
-        {/* LEFT — FILTERS */}
         <aside className="catalogFilters">
           <Filters />
         </aside>
 
-        {/* RIGHT — CARDS */}
         <div className="catalogContent">
           {isLoading && <p>Loading...</p>}
 
-          {!isLoading && items.length === 0 && <p>No campers found</p>}
+          {!isLoading && visibleItems.length === 0 && <p>No campers found</p>}
 
           <div className="catalogCards">
             {visibleItems.map((camper) => (
@@ -39,14 +69,12 @@ export default function CatalogPage() {
             ))}
           </div>
 
-          {/* LOAD MORE */}
-          {!isLoading && visibleCount < items.length && (
+          {visibleItems.length < filteredItems.length && (
             <button
-              type="button"
-              className="loadMore"
-              onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}
+              className="loadMoreBtn"
+              onClick={() => setVisibleCount((v) => v + 4)}
             >
-              Load more
+              Load More
             </button>
           )}
         </div>
